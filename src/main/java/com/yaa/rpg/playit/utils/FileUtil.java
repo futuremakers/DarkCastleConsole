@@ -15,15 +15,22 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.yaa.rpg.playit.Game;
 import com.yaa.rpg.playit.model.User;
 
 public class FileUtil {
 
 	public static String getFileNameWithExtension(String fileName){
 		StringBuilder sb= new StringBuilder(fileName);
-		if(!fileName.endsWith(Constants.FILE_EXTENSION))
-			sb.append(Constants.FILE_EXTENSION);
-				return sb.toString();
+		if(!fileName.endsWith(Constants.FILE_EXTENSION)){
+			sb.append("_");
+			if(Game.isHarryPotter)
+				sb.append(Constants.HARRY_POTTER_GAME);
+			else
+				sb.append(Constants.DARK_CASTLE_GAME);
+				sb.append(Constants.FILE_EXTENSION);
+		}
+		return sb.toString();
 	}	
 	public static void writeFile(Object object, String fileName) throws IOException {
 	      try (RandomAccessFile raf = new RandomAccessFile(getFileNameWithExtension(fileName), "rw") ;
@@ -36,15 +43,15 @@ public class FileUtil {
 	public static Object readFile(String fileName) throws IOException, ClassNotFoundException {
 	      try (RandomAccessFile raf = new RandomAccessFile(getFileNameWithExtension(fileName), "rw");
 	  	       FileInputStream fos = new FileInputStream(raf.getFD());
-	    	  ObjectInputStream objectInputStream = new ObjectInputStream(fos)){
-	    	  return  objectInputStream.readObject();
+	    	   ObjectInputStream objectInputStream = new ObjectInputStream(fos)){
+	    	   return  objectInputStream.readObject();
 	      } 
 	}
 	
 	public static List<String> listFiles(){
 		try(Stream<Path> subPaths=Files.walk(Paths.get(Constants.WORKING_DIR),1)) {
 			return subPaths.filter(Files::isRegularFile).map(Objects::toString)
-		    .filter(s ->  s.endsWith(".ser"))
+		    .filter(s ->  s.endsWith(Game.isHarryPotter?"_"+Constants.HARRY_POTTER_GAME+".ser":"_"+Constants.HARRY_POTTER_GAME+".ser"))
 		    .sorted()
 		    .collect(Collectors.toList());
 		} catch (IOException e1) {

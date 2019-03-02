@@ -7,13 +7,54 @@ import com.yaa.rpg.playit.model.User;
 import com.yaa.rpg.playit.service.UIservice;
 import com.yaa.rpg.playit.theme.ascii.AsciiArt;
 import com.yaa.rpg.playit.theme.color.Color;
+import com.yaa.rpg.playit.utils.Constants;
 
 public class ConsoleBasedUI implements UIservice {
 
 	Scanner scan = new Scanner(System.in);
 	StringBuilder strBuilder=new StringBuilder();
+	
 	@Override
-	public void printStory() {
+	public void displayGameCharacter() {
+		strBuilder.setLength(0);
+		AsciiArt.drawString("Play It!!", Color.MAGENTA_BG.format("*"));
+		strBuilder.append(Color.YELLOW.format("Hello Please select your adventure Character.\n" ))
+		.append(Color.GREEN_BG.format("1) Dark Castle Fighter \n"))
+		.append(Color.MAGENTA_BG.format("2) Harry Potter \n"))
+		.append(Color.YELLOW.format("Type 1 or 2 to select your character:"));
+		System.out.println(strBuilder.toString());
+		System.out.println();
+
+		System.out.flush();
+		
+	}
+
+	
+	@Override
+	public void printStory(String game) {
+		if(Constants.DARK_CASTLE_GAME.equals(game)){
+			printDarkStory();
+		}else if(Constants.HARRY_POTTER_GAME.equals(game)){
+			printHarryStory();
+		}
+		
+	}
+	private void printHarryStory() {
+		strBuilder.setLength(0);
+		AsciiArt.drawString("Harry Potter", Color.MAGENTA_BG.format("+"));
+		strBuilder.append("\n--------------------------------------------------------------------------------------------------------------------\n")
+		.append("Harry Potter and the RPG'd Chamber of Secrets!\n")
+		.append("This is a game based inspired by the wonderful book, Harry Potter and the Chamber of Secrets\n")
+		.append("SCENARIO:\n")
+		.append("After seeing the memory Dumbledore had stored of Tom Riddle, Harry Potter seeks to unlock the Chamber of Secrets in order to save Jinny Weasley who had been taken by Tom Riddle\n")
+		.append("You are Harry Potter and your mission is to save Jinny Weasley\n")
+		.append("You must act fast, young wizard. Time is a matter of life or DEATH!\n")
+		.append("--------------------------------------");
+		System.out.println(Color.BLUE.format(strBuilder.toString()));
+		System.out.flush();
+	}
+
+	private void printDarkStory() {
 		strBuilder.setLength(0);
 		AsciiArt.drawString("Dark Castle", Color.MAGENTA_BG.format("+"));
 		strBuilder.append("\n--------------------------------------------------------------------------------------------------------------------\n")

@@ -6,6 +6,7 @@ import com.yaa.rpg.playit.persistence.RiddleDao;
 import com.yaa.rpg.playit.persistence.impl.RiddleDaoImpl;
 import com.yaa.rpg.playit.service.UIservice;
 import com.yaa.rpg.playit.utils.Commands;
+import com.yaa.rpg.playit.utils.Constants;
 
 public class DarkCastleGameRules implements GameRules {
 
@@ -15,6 +16,7 @@ public class DarkCastleGameRules implements GameRules {
 	public DarkCastleGameRules(UIservice ui) {
 		riddlesDao = new RiddleDaoImpl();
 		this.ui = ui;
+		ui.printStory(Constants.DARK_CASTLE_GAME);
 	}
 
 	@Override

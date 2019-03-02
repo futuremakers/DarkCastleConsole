@@ -13,6 +13,11 @@ public class User  implements Serializable{
 	private Integer gems;
 	private Integer health;
 	transient UIservice ui;
+	
+    private int attackDmg = 25;
+	private int numHealthPots = 3;
+	private int healthPotionHealAmount = 20;
+	private int healthPotionDropChance = 10;
 
 	@Override
 	public String toString() {
@@ -147,6 +152,54 @@ public class User  implements Serializable{
 
 	public void setUI(UIservice ui) {
 		this.ui=ui;
+	}
+
+	public int getAttackDmg() {
+		return attackDmg;
+	}
+
+	public void setAttackDmg(int attackDmg) {
+		this.attackDmg = attackDmg;
+	}
+
+	public int getNumHealthPots() {
+		return numHealthPots;
+	}
+
+	public void setNumHealthPots(int numHealthPots) {
+		this.numHealthPots = numHealthPots;
+	}
+
+	public int getHealthPotionHealAmount() {
+		return healthPotionHealAmount;
+	}
+
+	public void setHealthPotionHealAmount(int healthPotionHealAmount) {
+		this.healthPotionHealAmount = healthPotionHealAmount;
+	}
+
+	public int getHealthPotionDropChance() {
+		return healthPotionDropChance;
+	}
+
+	public void setHealthPotionDropChance(int healthPotionDropChance) {
+		this.healthPotionDropChance = healthPotionDropChance;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
+	public void setGems(Integer gems) {
+		this.gems = gems;
+	}
+
+	public void setHealth(Integer health) {
+		this.health = health;
 	}
 
 }

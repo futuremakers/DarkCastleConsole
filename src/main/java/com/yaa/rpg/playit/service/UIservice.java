@@ -5,7 +5,7 @@ import java.util.List;
 import com.yaa.rpg.playit.model.User;
 
 public interface UIservice {
-	void printStory();
+	void printStory(String game);
 	void printInstructions();
 	void displayFinishedGameMessage();
 	void displayUnFinishedGameMessage();
@@ -27,4 +27,5 @@ public interface UIservice {
 	void displayCorrectAnswerMessage();
 	void displayInCorrectAnswerMessage();
 	void printHelp();
+	void displayGameCharacter();
 }
