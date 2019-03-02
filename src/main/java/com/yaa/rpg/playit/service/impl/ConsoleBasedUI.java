@@ -158,7 +158,7 @@ public class ConsoleBasedUI implements UIservice {
 
 	@Override
 	public void displayWinMessage() {
-		AsciiArt.drawString("PRINCESS", "*");
+		AsciiArt.drawString("PRINCESS", Color.RED_BG.format("*"));
 		System.out.println(Color.MAGENTA_BG.format("****************************"));
 		System.out.println(Color.GREEN_BG.format("Princess is in this room.You won!!"));
 		System.out.println(Color.MAGENTA_BG.format("****************************"));
