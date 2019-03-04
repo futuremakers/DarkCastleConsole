@@ -24,26 +24,28 @@ public class UserDaoSerialization implements UserDao {
 	}
 
 	@Override
-	public void persistUser(User toSave) {
+	public User persistUser(User toSave) {
 		try {
 			FileUtil.writeFile(toSave, toSave.getName());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return toSave;
 	}
 
 	@Override
-	public void updateUser(User player) {
-		persistUser(player);
+	public User updateUser(User player) {
+		return persistUser(player);
 	}
 
 	@Override
-	public void deleteUser(String username) {
+	public String deleteUser(String username) {
 		try {
 			FileUtil.deleteFile(username);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return username;
 	}
 
 }

@@ -50,6 +50,10 @@ public class UserManageCLI implements UserManagement {
 	public User addUser() {
 		ui.userIntroMessage();
 		String name = ui.readUserInputString();
+		if(name==null || name.isEmpty()){
+			ui.displayInvalidOptionMessage();
+			addUser();
+		}
 		User selectedUser = new User(name);
 		userdao.persistUser(selectedUser);
 		return selectedUser;
