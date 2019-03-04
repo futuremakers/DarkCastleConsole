@@ -1,25 +1,18 @@
 package com.yaa.rpg.playit.service.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import javax.jws.soap.InitParam;
+import java.util.Arrays;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
 import com.yaa.rpg.playit.model.User;
 import com.yaa.rpg.playit.persistence.UserDao;
 import com.yaa.rpg.playit.persistence.impl.UserDaoSerialization;
@@ -49,18 +42,6 @@ public class UserManageCLITest {
         when(userdao.deleteUser(user1.getName())).thenReturn(user1.getName());
     }
     
-    
-    
-    @Test
-	public void testSelectUser_emptyList() throws Exception {
-		/*String username="yasser";
-		List<User> users = Collections.emptyList();
-		User selectedUser = new User(username);
-		userdao.persistUser(selectedUser);
-		assertNotNull(FileUtil.readFile(username));*/
-	}
-	
-	@Test
 	public void testSelectUser_firstUser() throws Exception {
 		when(ui.readUserInputInt()).thenReturn(1);
 		User user=userManageCLI.selectUser();
@@ -89,13 +70,5 @@ public class UserManageCLITest {
 		User user=userManageCLI.selectUser();
 		assertTrue(user.getName().equals("yasser3"));
 	}
-	
-	/*@Test(expected=StackOverflowError.class)	
-	public void testSelectUser_deleteUser() throws Exception {
-		when(ui.readUserInputInt()).thenReturn(deleteIndex);
-		when(ui.readUserInputString()).thenReturn("yasser1") ;
-		userManageCLI.selectUser();
-		
-	}*/
 	
 }

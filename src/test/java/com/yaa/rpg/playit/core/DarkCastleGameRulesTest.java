@@ -28,12 +28,4 @@ public class DarkCastleGameRulesTest {
 	@Test
 	public void testApply() throws Exception {}
 
-	@Test
-	public void testFightMonster() throws Exception {
-		throw new RuntimeException("not yet implemented");
-	}
-	
-	
-	
-	
 }
